@@ -30,11 +30,15 @@ export class CoffeesService {
 
   create(createCoffeeDto: CreateCoffeeDto) {
     this.coffees.push({ id: 2, ...createCoffeeDto });
+    return this.coffees[2];
   }
 
   update(id: string, updateCoffeeDto: UpdateCoffeeDto) {
     const existingCoffee = this.findOne(id);
     if (existingCoffee) {
+      const updatedCoffee = { ...existingCoffee, ...updateCoffeeDto };
+      const coffeeIndex = this.coffees.findIndex((item) => item.id === +id);
+      this.coffees[coffeeIndex] = updatedCoffee;
     }
   }
 
