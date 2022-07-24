@@ -18,7 +18,7 @@ export class CoffeesService {
     return this.coffees;
   }
 
-  findOne(id: string) {
+  findOne(id: number) {
     const coffee = this.coffees.find((item) => item.id === +id);
 
     if (!coffee) {
@@ -33,7 +33,7 @@ export class CoffeesService {
     return this.coffees[2];
   }
 
-  update(id: string, updateCoffeeDto: UpdateCoffeeDto) {
+  update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
     const existingCoffee = this.findOne(id);
     if (existingCoffee) {
       const updatedCoffee = { ...existingCoffee, ...updateCoffeeDto };
